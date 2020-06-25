@@ -1,7 +1,7 @@
 import md5 from "md5";
 
 const MODEL = "Usuario";
-const API_URL = process.env.REACT_APP_API + "/users";
+const API_URL = process.env.REACT_APP_API;
 const usuario = getUser();
 
 export async function login(email, password) {
@@ -48,7 +48,7 @@ export function getUser() {
 
 export async function register(send) {
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(API_URL + "/registerUser", {
       method: "POST",
       body: JSON.stringify(send),
       headers: {
@@ -71,7 +71,7 @@ export async function register(send) {
 
 export async function validate(send) {
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(API_URL + "/validateIdentity", {
       method: "POST",
       body: JSON.stringify(send),
       headers: {
